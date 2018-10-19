@@ -1,0 +1,116 @@
+<?php
+/**
+ * Plugin name: Snow Monkey Heading Widget Area
+ * Description: A plugin that adds a widget area to be displayed above the first heading of posts.
+ *
+ * @package snow-monkey-woocommerce
+ * @author inc2734
+ * @license GPL-2.0+
+ */
+
+namespace Snow_Monkey\Plugin\SnowMonkeyHeadingWidgetArea;
+
+class Bootstrap {
+
+	/**
+	 * The ID of heading sidebar
+	 *
+	 * @var string
+	 */
+	protected $sidebar_id = 'heading-widget-area';
+
+	public function __construct() {
+		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
+	}
+
+	public function _bootstrap() {
+		load_plugin_textdomain( 'snow-monkey-heading-widget-area', false, basename( __DIR__ ) . '/languages' );
+
+		add_action( 'widgets_init', [ $this, '_widgets_init' ] );
+		add_action( 'wp_footer', [ $this, '_display_widget_area' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ], 9 );
+	}
+
+	/**
+	 * Add widget area
+	 *
+	 * @return void
+	 */
+	public function _widgets_init() {
+		register_sidebar(
+			[
+				'name'          => __( '1st heading widget area', 'snow-monkey-heading-widget-area' ),
+				'description'   => __( 'These widgets are displayed above the first heading of posts.', 'snow-monkey' ),
+				'id'            => $this->sidebar_id,
+				'before_widget' => '<div id="%1$s" class="c-widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="c-widget__title">',
+				'after_title'   => '</h3>',
+			]
+		);
+	}
+
+	/**
+	 * Display widget area
+	 *
+	 * @return void
+	 */
+	public function _display_widget_area() {
+		$post_types = apply_filters( 'snow_monkey_heading_widget_area_allow_post_types', [ 'post' ] );
+
+		if ( ! is_singular( $post_types ) ) {
+			return;
+		}
+
+		if ( ! $this->_has_sidebar() ) {
+			return;
+		}
+		?>
+		<div class="l-heading-widget-area"
+			aria-hidden="true"
+			data-is-slim-widget-area="false"
+			data-is-content-widget-area="false"
+			>
+			<?php dynamic_sidebar( $this->sidebar_id ); ?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Enqueue assets
+	 *
+	 * @return void
+	 */
+	public function _wp_enqueue_scripts() {
+		if ( ! $this->_has_sidebar() ) {
+			return;
+		}
+
+		wp_enqueue_script(
+			'snow-monkey-heading-widget-area',
+			plugin_dir_url( __FILE__ ) . '/dist/js/app.js',
+			[],
+			filemtime( plugin_dir_path( __FILE__ ) . '/dist/js/app.js' ),
+			true
+		);
+
+		wp_enqueue_style(
+			'snow-monkey-heading-widget-area',
+			plugin_dir_url( __FILE__ ) . '/dist/css/app.css',
+			[],
+			filemtime( plugin_dir_path( __FILE__ ) . '/dist/css/app.css' )
+		);
+	}
+
+	/**
+	 * Return true when had sidebar
+	 *
+	 * @return boolean
+	 */
+	private function _has_sidebar() {
+		return is_active_sidebar( $this->sidebar_id ) && is_registered_sidebar( $this->sidebar_id );
+	}
+}
+
+require_once( __DIR__ . '/vendor/autoload.php' );
+new Bootstrap();

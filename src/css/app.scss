@@ -1,0 +1,11 @@
+.l-heading-widget-area {
+  display: none;
+
+  &[aria-hidden="false"] {
+    display: block;
+  }
+
+  > * + * {
+    margin-top: 2.33696rem;
+  }
+}
