@@ -2,6 +2,7 @@
 /**
  * Plugin name: Snow Monkey Heading Widget Area
  * Description: A plugin that adds a widget area to be displayed above the first heading of posts.
+ * Version: 1.0.0
  *
  * @package snow-monkey-woocommerce
  * @author inc2734
@@ -21,6 +22,7 @@ class Bootstrap {
 
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
+		add_action( 'init', [ $this, '_activate_autoupdate' ] );
 	}
 
 	public function _bootstrap() {
@@ -40,7 +42,7 @@ class Bootstrap {
 		register_sidebar(
 			[
 				'name'          => __( '1st heading widget area', 'snow-monkey-heading-widget-area' ),
-				'description'   => __( 'These widgets are displayed above the first heading of posts.', 'snow-monkey' ),
+				'description'   => __( 'These widgets are displayed above the first heading of posts.', 'snow-monkey-heading-widget-area' ),
 				'id'            => $this->sidebar_id,
 				'before_widget' => '<div id="%1$s" class="c-widget %2$s">',
 				'after_widget'  => '</div>',
@@ -99,6 +101,19 @@ class Bootstrap {
 			plugin_dir_url( __FILE__ ) . '/dist/css/app.css',
 			[],
 			filemtime( plugin_dir_path( __FILE__ ) . '/dist/css/app.css' )
+		);
+	}
+
+	/**
+	 * Activate auto update using GitHub
+	 *
+	 * @return [void]
+	 */
+	public function _activate_autoupdate() {
+		new \Inc2734\WP_GitHub_Plugin_Updater\GitHub_Plugin_Updater(
+			plugin_basename( __FILE__ ),
+			'inc2734',
+			'snow-monkey-heading-widget-area'
 		);
 	}
 
