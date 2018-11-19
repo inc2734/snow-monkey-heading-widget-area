@@ -7,7 +7,11 @@ export default class SnowMonkeyHeadingWidgetArea {
 
   _DOMContentLoaded() {
     const firstHeading = document.querySelector('.c-entry__content > h2');
-    const widgetAreas  = document.getElementsByClassName('l-heading-widget-area');
+    if (! firstHeading) {
+      return;
+    }
+
+    const widgetAreas = document.getElementsByClassName('l-heading-widget-area');
 
     this._forEachHtmlNodes(widgetAreas, (element) => {
       firstHeading.parentNode.insertBefore(element, firstHeading);
