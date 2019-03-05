@@ -4,7 +4,7 @@
  * Description: A plugin that adds a widget area to be displayed above the first heading of posts.
  * Version: 1.0.3
  *
- * @package snow-monkey-woocommerce
+ * @package snow-monkey-heading-widget-area
  * @author inc2734
  * @license GPL-2.0+
  */
