@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package snow-monkey-blocks
+ * @package snow-monkey-heading-widget-area
  */
 
 /**

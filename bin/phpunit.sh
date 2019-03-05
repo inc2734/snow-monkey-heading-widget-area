@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-if [ -e /tmp/wordpress-tests-lib ]; then
+WP_TESTS_DIR=${WP_TESTS_DIR-/tmp/wordpress-tests-lib}
 
-  themedir=$(pwd)
+if [ -e ${WP_TESTS_DIR} -a -e ${WP_TESTS_DIR}/includes/functions.php ]; then
 
-  cd ${themedir};
-  vendor/bin/phpunit
+  plugindir=$(pwd)
+
+  cd ${plugindir};
+  vendor/bin/phpunit --configuration=${plugindir}/phpunit.xml.dist
   exit 0
 fi
 

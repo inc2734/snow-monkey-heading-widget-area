@@ -29,7 +29,7 @@ class Bootstrap {
 		load_plugin_textdomain( 'snow-monkey-heading-widget-area', false, basename( __DIR__ ) . '/languages' );
 
 		add_action( 'widgets_init', [ $this, '_widgets_init' ] );
-		add_action( 'wp_footer', [ $this, '_display_widget_area' ] );
+		add_action( 'snow_monkey_after_entry_content', [ $this, '_display_widget_area' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ], 9 );
 	}
 

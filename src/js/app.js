@@ -1,11 +1,15 @@
 'use strict';
 
-export default class SnowMonkeyHeadingWidgetArea {
-  constructor() {
-    window.addEventListener('DOMContentLoaded', () => this._DOMContentLoaded(), false);
-  }
+import forEachHtmlNodes from '@inc2734/for-each-html-nodes';
 
-  _DOMContentLoaded() {
+const moveWidgetArea = (widgetArea, firstHeading) => {
+  firstHeading.parentNode.insertBefore(widgetArea, firstHeading);
+  widgetArea.setAttribute('aria-hidden', 'false');
+};
+
+window.addEventListener(
+  'DOMContentLoaded',
+  () => {
     const firstHeading = document.querySelector('.c-entry__content > h2');
     if (! firstHeading) {
       return;
@@ -13,17 +17,7 @@ export default class SnowMonkeyHeadingWidgetArea {
 
     const widgetAreas = document.getElementsByClassName('l-heading-widget-area');
 
-    this._forEachHtmlNodes(widgetAreas, (element) => {
-      firstHeading.parentNode.insertBefore(element, firstHeading);
-      element.setAttribute('aria-hidden', 'false');
-    });
-  }
-
-  _forEachHtmlNodes(htmlNodes, callback) {
-    if (0 < htmlNodes.length) {
-      [].forEach.call(htmlNodes, (htmlNode) => callback(htmlNode));
-    }
-  }
-}
-
-new SnowMonkeyHeadingWidgetArea();
+    forEachHtmlNodes(widgetAreas, (element) => moveWidgetArea(element, firstHeading));
+  },
+  false
+);
