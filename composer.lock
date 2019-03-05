@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1354f3b45ebee4c4b2a21093fc8caa5",
+    "content-hash": "7bd30fc70ceca9e8609c4bfe53a2421e",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -54,16 +54,16 @@
         },
         {
             "name": "inc2734/wp-github-plugin-updater",
-            "version": "0.1.3",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-github-plugin-updater.git",
-                "reference": "2e286d1764acfadb1d60b4232c627261c34fb602"
+                "reference": "9b051b2562a3b0ee511c2025a7654990afeac282"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-github-plugin-updater/zipball/2e286d1764acfadb1d60b4232c627261c34fb602",
-                "reference": "2e286d1764acfadb1d60b4232c627261c34fb602",
+                "url": "https://api.github.com/repos/inc2734/wp-github-plugin-updater/zipball/9b051b2562a3b0ee511c2025a7654990afeac282",
+                "reference": "9b051b2562a3b0ee511c2025a7654990afeac282",
                 "shasum": ""
             },
             "require": {
@@ -71,8 +71,10 @@
                 "php": ">=5.6"
             },
             "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
+                "phpcompatibility/phpcompatibility-wp": "*",
                 "phpmd/phpmd": "2.*",
-                "phpunit/phpunit": "^5.7",
+                "phpunit/phpunit": "7.*",
                 "squizlabs/php_codesniffer": "*",
                 "wp-coding-standards/wpcs": "*"
             },
@@ -93,7 +95,7 @@
                 }
             ],
             "description": "A library for WordPress that automatic plugin updater with GitHub API.",
-            "time": "2018-06-21T02:03:52+00:00"
+            "time": "2019-03-05T03:25:15+00:00"
         }
     ],
     "packages-dev": [
