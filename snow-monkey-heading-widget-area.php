@@ -11,6 +11,11 @@
 
 namespace Snow_Monkey\Plugin\SnowMonkeyHeadingWidgetArea;
 
+use Inc2734\WP_Plugin_View_Controller;
+
+define( 'SNOW_MONKEY_HEADING_WIDGET_AREA_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'SNOW_MONKEY_HEADING_WIDGET_AREA_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+
 class Bootstrap {
 
 	/**
@@ -67,15 +72,15 @@ class Bootstrap {
 		if ( ! $this->_has_sidebar() ) {
 			return;
 		}
-		?>
-		<div class="l-heading-widget-area"
-			aria-hidden="true"
-			data-is-slim-widget-area="false"
-			data-is-content-widget-area="false"
-			>
-			<?php dynamic_sidebar( $this->sidebar_id ); ?>
-		</div>
-		<?php
+
+		$bootstrap = new WP_Plugin_View_Controller\Bootstrap(
+			[
+				'prefix' => 'snow_monkey_heading_widget_area_',
+				'path'   => SNOW_MONKEY_HEADING_WIDGET_AREA_PATH . '/templates/',
+			]
+		);
+
+		$bootstrap->render( 'heading-widget-area', null, [ 'sidebar_id' => $this->sidebar_id ] );
 	}
 
 	/**
@@ -90,17 +95,17 @@ class Bootstrap {
 
 		wp_enqueue_script(
 			'snow-monkey-heading-widget-area',
-			plugin_dir_url( __FILE__ ) . '/dist/js/app.js',
+			SNOW_MONKEY_HEADING_WIDGET_AREA_URL . '/dist/js/app.js',
 			[],
-			filemtime( plugin_dir_path( __FILE__ ) . '/dist/js/app.js' ),
+			filemtime( SNOW_MONKEY_HEADING_WIDGET_AREA_PATH . '/dist/js/app.js' ),
 			true
 		);
 
 		wp_enqueue_style(
 			'snow-monkey-heading-widget-area',
-			plugin_dir_url( __FILE__ ) . '/dist/css/app.css',
+			SNOW_MONKEY_HEADING_WIDGET_AREA_URL . '/dist/css/app.css',
 			[],
-			filemtime( plugin_dir_path( __FILE__ ) . '/dist/css/app.css' )
+			filemtime( SNOW_MONKEY_HEADING_WIDGET_AREA_PATH . '/dist/css/app.css' )
 		);
 	}
 
