@@ -2,7 +2,7 @@
 /**
  * Plugin name: Snow Monkey Heading Widget Area
  * Description: A plugin that adds a widget area to be displayed above the first heading of posts.
- * Version: 1.0.5
+ * Version: 1.1.0
  *
  * @package snow-monkey-heading-widget-area
  * @author inc2734
