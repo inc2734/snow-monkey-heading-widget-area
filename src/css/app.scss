@@ -1,8 +1,12 @@
 .l-heading-widget-area {
-  display: none;
+  height: auto;
+  visibility: visible;
+  overflow: hidden;
 
-  &[aria-hidden="false"] {
-    display: block;
+  &[aria-hidden="true"] {
+    margin: 0 !important;
+    height: 0 !important;
+    visibility: hidden !important;
   }
 
   > * + * {
