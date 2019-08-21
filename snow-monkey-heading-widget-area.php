@@ -12,6 +12,7 @@
 namespace Snow_Monkey\Plugin\SnowMonkeyHeadingWidgetArea;
 
 use Inc2734\WP_Plugin_View_Controller;
+use Inc2734\WP_GitHub_Plugin_Updater\Bootstrap as Updater;
 
 define( 'SNOW_MONKEY_HEADING_WIDGET_AREA_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'SNOW_MONKEY_HEADING_WIDGET_AREA_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
@@ -122,7 +123,7 @@ class Bootstrap {
 	 * @return [void]
 	 */
 	public function _activate_autoupdate() {
-		new \Inc2734\WP_GitHub_Plugin_Updater\Bootstrap(
+		new Updater(
 			plugin_basename( __FILE__ ),
 			'inc2734',
 			'snow-monkey-heading-widget-area'
