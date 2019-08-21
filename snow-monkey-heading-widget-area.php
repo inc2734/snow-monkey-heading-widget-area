@@ -27,11 +27,18 @@ class Bootstrap {
 
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
-		add_action( 'init', [ $this, '_activate_autoupdate' ] );
 	}
 
 	public function _bootstrap() {
 		load_plugin_textdomain( 'snow-monkey-heading-widget-area', false, basename( __DIR__ ) . '/languages' );
+
+		add_action( 'init', [ $this, '_activate_autoupdate' ] );
+
+		$theme = wp_get_theme( get_template() );
+		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
+			add_action( 'admin_notices', [ $this, '_admin_notice_no_snow_monkey' ] );
+			return;
+		}
 
 		add_action( 'widgets_init', [ $this, '_widgets_init' ] );
 		add_action( 'snow_monkey_after_entry_content', [ $this, '_display_widget_area' ] );
@@ -120,6 +127,21 @@ class Bootstrap {
 			'inc2734',
 			'snow-monkey-heading-widget-area'
 		);
+	}
+
+	/**
+	 * Admin notice for no Snow Monkey
+	 *
+	 * @return void
+	 */
+	public function _admin_notice_no_snow_monkey() {
+		?>
+		<div class="notice notice-warning is-dismissible">
+			<p>
+				<?php esc_html_e( '[Snow Monkey Heading Widget Area] Needs the Snow Monkey.', 'snow-monkey-heading-widget-area' ); ?>
+			</p>
+		</div>
+		<?php
 	}
 
 	/**

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Heading Widget Area\n"
-"POT-Creation-Date: 2018-10-19 11:56+0900\n"
-"PO-Revision-Date: 2018-10-19 11:57+0900\n"
+"POT-Creation-Date: 2019-08-21 22:48+0900\n"
+"PO-Revision-Date: 2019-08-21 22:48+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -21,13 +21,17 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: snow-monkey-heading-widget-area.php:42
+#: snow-monkey-heading-widget-area.php:56
 msgid "1st heading widget area"
 msgstr "最初の見出しウィジェットエリア"
 
-#: snow-monkey-heading-widget-area.php:43
+#: snow-monkey-heading-widget-area.php:57
 msgid "These widgets are displayed above the first heading of posts."
 msgstr "これらのウィジェットは投稿の最初の見出しの上に表示されます。"
+
+#: snow-monkey-heading-widget-area.php:141
+msgid "[Snow Monkey Heading Widget Area] Needs the Snow Monkey."
+msgstr "[Snow Monkey Heading Widget Area] Snow Monkeyが必要です。"
 
 #. Plugin Name of the plugin/theme
 msgid "Snow Monkey Heading Widget Area"
