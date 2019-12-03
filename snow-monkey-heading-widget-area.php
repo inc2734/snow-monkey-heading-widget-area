@@ -112,7 +112,7 @@ class Bootstrap {
 		wp_enqueue_style(
 			'snow-monkey-heading-widget-area',
 			SNOW_MONKEY_HEADING_WIDGET_AREA_URL . '/dist/css/app.css',
-			[],
+			[ \Framework\Helper::get_main_style_handle() ],
 			filemtime( SNOW_MONKEY_HEADING_WIDGET_AREA_PATH . '/dist/css/app.css' )
 		);
 	}
