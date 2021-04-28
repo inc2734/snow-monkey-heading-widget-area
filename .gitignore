@@ -4,3 +4,6 @@ node_modules/
 snow-monkey-heading-widget-area.zip
 snow-monkey-heading-widget-area
 dist/
+/.themes/
+.wp-env.override.json
+/.export/*

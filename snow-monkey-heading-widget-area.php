@@ -3,7 +3,7 @@
  * Plugin name: Snow Monkey Heading Widget Area
  * Description: A plugin that adds a widget area to be displayed above the first heading of posts.
  * Version: 1.2.1
- * Tested up to: 5.5
+ * Tested up to: 5.7
  * Requires at least: 5.5
  * Requires PHP: 5.6
  *
@@ -29,10 +29,16 @@ class Bootstrap {
 	 */
 	protected $sidebar_id = 'heading-widget-area';
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
 	}
 
+	/**
+	 * Bootstrap.
+	 */
 	public function _bootstrap() {
 		load_plugin_textdomain( 'snow-monkey-heading-widget-area', false, basename( __DIR__ ) . '/languages' );
 
@@ -50,9 +56,7 @@ class Bootstrap {
 	}
 
 	/**
-	 * Add widget area
-	 *
-	 * @return void
+	 * Add widget area.
 	 */
 	public function _widgets_init() {
 		register_sidebar(
@@ -69,9 +73,7 @@ class Bootstrap {
 	}
 
 	/**
-	 * Display widget area
-	 *
-	 * @return void
+	 * Display widget area.
 	 */
 	public function _display_widget_area() {
 		$post_types = apply_filters( 'snow_monkey_heading_widget_area_allow_post_types', [ 'post' ] );
@@ -95,9 +97,7 @@ class Bootstrap {
 	}
 
 	/**
-	 * Enqueue assets
-	 *
-	 * @return void
+	 * Enqueue assets.
 	 */
 	public function _wp_enqueue_scripts() {
 		if ( ! $this->_has_sidebar() ) {
@@ -121,9 +121,7 @@ class Bootstrap {
 	}
 
 	/**
-	 * Activate auto update using GitHub
-	 *
-	 * @return [void]
+	 * Activate auto update using GitHub.
 	 */
 	public function _activate_autoupdate() {
 		new Updater(
@@ -137,9 +135,7 @@ class Bootstrap {
 	}
 
 	/**
-	 * Admin notice for no Snow Monkey
-	 *
-	 * @return void
+	 * Admin notice for no Snow Monkey.
 	 */
 	public function _admin_notice_no_snow_monkey() {
 		?>
@@ -152,7 +148,7 @@ class Bootstrap {
 	}
 
 	/**
-	 * Return true when had sidebar
+	 * Return true when had sidebar.
 	 *
 	 * @return boolean
 	 */

@@ -11,5 +11,9 @@
 	data-is-slim-widget-area="false"
 	data-is-content-widget-area="false"
 	>
-	<?php dynamic_sidebar( $sidebar_id ); ?>
+	<?php
+	// phpcs:disable VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
+	dynamic_sidebar( $sidebar_id );
+	// phpcs:enable
+	?>
 </div>
