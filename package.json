@@ -35,7 +35,7 @@
     "clean:zip": "rimraf snow-monkey-heading-widget-area.zip",
     "cleanup:css": "rimraf dist/css && mkdir -p dist/css",
     "css": "node-sass src/css -o dist/css && postcss dist/css/app.css -r -c=postcss.config.js",
-    "js": "wp-scripts build src/js/app.js --output-path=dist/js",
+    "js": "wp-scripts build src/js/app --output-path=dist/js",
     "build": "npm-run-all -p js css",
     "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-heading-widget-area && wp-env start && wp-env run composer 'install --no-dev -d snow-monkey-heading-widget-area'",
     "zip:archive": "zip -9 -qmr snow-monkey-heading-widget-area.zip snow-monkey-heading-widget-area",
