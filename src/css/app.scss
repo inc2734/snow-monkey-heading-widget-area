@@ -1,20 +1,15 @@
-$_base-font-size-px: 16px !default;
-$_half-leading: .4 !default;
-
-@import '../../node_modules/sass-basis/src/css/basis-core';
-
 .l-heading-widget-area {
-  height: auto;
-  visibility: visible;
-  overflow: hidden;
+	height: auto;
+	visibility: visible;
+	overflow: hidden;
 
-  &[aria-hidden="true"] {
-    margin: 0 !important;
-    height: 0 !important;
-    visibility: hidden !important;
-  }
+	&[aria-hidden="true"] {
+		margin: 0 !important;
+		height: 0 !important;
+		visibility: hidden !important;
+	}
 
-  > * + * {
-    @include _margin-top(1.5);
-  }
+	> * + * {
+		margin-top: var(--_margin2);
+	}
 }
