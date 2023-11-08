@@ -2,7 +2,7 @@
 /**
  * Plugin name: Snow Monkey Heading Widget Area
  * Description: A plugin that adds a widget area to be displayed above the first heading of posts.
- * Version: 2.0.2
+ * Version: 2.1.0
  * Tested up to: 6.4
  * Requires at least: 6.1
  * Requires PHP: 7.4
@@ -64,9 +64,9 @@ class Bootstrap {
 
 		$data = get_file_data(
 			__FILE__,
-			[
+			array(
 				'RequiresSnowMonkey' => 'Requires Snow Monkey',
-			]
+			)
 		);
 
 		if (
