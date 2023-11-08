@@ -41,15 +41,15 @@ define( 'GUTENBERG_LOAD_VENDOR_SCRIPTS', false );
 function _manually_load_plugin() {
 	$theme_dir     = __DIR__ . '/../.themes/snow-monkey';
 	$current_theme = basename( $theme_dir );
-	$theme_root    = dirname( $theme_dir );
-	add_filter(
-		'theme_root',
-		function() use ( $theme_root ) {
-			return $theme_root;
-		}
-	);
+	// $theme_root    = dirname( $theme_dir );
+	// add_filter(
+	// 	'theme_root',
+	// 	function() use ( $theme_root ) {
+	// 		return $theme_root;
+	// 	}
+	// );
 
-	register_theme_directory( $theme_root );
+	// register_theme_directory( $theme_root );
 
 	add_filter(
 		'pre_option_template',
