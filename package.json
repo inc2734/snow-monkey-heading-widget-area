@@ -54,7 +54,8 @@
 		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-heading-widget-area && wp-env start && npm run composer install -- --no-dev -d snow-monkey-heading-widget-area",
 		"zip:archive": "zip -9 -qmr snow-monkey-heading-widget-area.zip snow-monkey-heading-widget-area",
 		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive",
-		"make-pot": "npm run wp i18n -- make-pot . ./languages/snow-monkey-heading-widget-area.pot --exclude=src"
+		"make-pot": "npm run wp i18n -- make-pot . ./languages/snow-monkey-heading-widget-area.pot --exclude=src",
+		"make-php": "npm run cli php -- wp-content/plugins/snow-monkey-heading-widget-area/bin/l10n.php"
 	},
 	"dependencies": {
 		"@inc2734/for-each-html-nodes": "^0.4.0"
