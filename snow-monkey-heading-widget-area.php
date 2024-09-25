@@ -49,7 +49,7 @@ class Bootstrap {
 		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
 			add_action(
 				'admin_notices',
-				function() {
+				function () {
 					?>
 					<div class="notice notice-warning is-dismissible">
 						<p>
@@ -75,14 +75,14 @@ class Bootstrap {
 		) {
 			add_action(
 				'admin_notices',
-				function() use ( $data ) {
+				function () use ( $data ) {
 					?>
 					<div class="notice notice-warning is-dismissible">
 						<p>
 							<?php
 							echo esc_html(
 								sprintf(
-									// translators: %1$s: version
+									// translators: %1$s: version.
 									__(
 										'[Snow Monkey Heading Widget Area] Needs the Snow Monkey %1$s or more.',
 										'snow-monkey-heading-widget-area'
@@ -193,5 +193,5 @@ class Bootstrap {
 	}
 }
 
-require_once( __DIR__ . '/vendor/autoload.php' );
+require_once __DIR__ . '/vendor/autoload.php';
 new Bootstrap();
