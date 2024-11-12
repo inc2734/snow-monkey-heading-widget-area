@@ -41,8 +41,7 @@ class Bootstrap {
 	 * Bootstrap.
 	 */
 	public function _bootstrap() {
-		load_plugin_textdomain( 'snow-monkey-heading-widget-area', false, basename( __DIR__ ) . '/languages' );
-
+		add_action( 'init', array( $this, '_load_textdomain' ) );
 		add_action( 'init', array( $this, '_activate_autoupdate' ) );
 
 		$theme = wp_get_theme( get_template() );
@@ -167,6 +166,13 @@ class Bootstrap {
 			array( \Framework\Helper::get_main_style_handle() ),
 			filemtime( SNOW_MONKEY_HEADING_WIDGET_AREA_PATH . '/dist/css/app.css' )
 		);
+	}
+
+	/**
+	 * Load textdomaiin.
+	 */
+	public function _load_textdomain() {
+		load_plugin_textdomain( 'snow-monkey-heading-widget-area', false, basename( __DIR__ ) . '/languages' );
 	}
 
 	/**
