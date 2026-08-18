@@ -1,23 +1,23 @@
 {
 	"engines": {
-		"node": ">=20.10.0",
+		"node": "^22.11.0 || ^24.11.0 || >=26.0.0",
 		"npm": ">=10.2.3"
 	},
 	"volta": {
-		"node": "20.11.1"
+		"node": "24.18.0"
 	},
 	"author": "inc2734",
 	"license": "GPL-2.0+",
 	"devDependencies": {
-		"@wordpress/browserslist-config": "^6.22.0",
-		"@wordpress/env": "^10.22.0",
-		"@wordpress/scripts": "^30.15.0",
-		"autoprefixer": "^10.4.21",
-		"cssnano": "^7.0.6",
+		"@wordpress/browserslist-config": "^6.53.0",
+		"@wordpress/env": "^11.13.0",
+		"@wordpress/scripts": "^34.1.0",
+		"autoprefixer": "^10.5.4",
+		"cssnano": "^8.0.6",
 		"npm-run-all": "^4.1.5",
-		"postcss": "^8.5.3",
+		"postcss": "^8.5.26",
 		"postcss-cli": "^11.0.1",
-		"rimraf": "^6.0.1"
+		"rimraf": "^6.1.3"
 	},
 	"scripts": {
 		"export:wp-content:themes": "npm run cli cp -- -r ../../themes .export/wp-content",
@@ -45,7 +45,7 @@
 		"clean:js": "rimraf dist/js",
 		"clean:zip": "rimraf snow-monkey-heading-widget-area.zip",
 		"cleanup:css": "rimraf dist/css && mkdir -p dist/css",
-		"css": "sass --no-source-map src/css/app.scss:dist/css/app.css && postcss dist/css/app.css -r -c=postcss.config.js",
+		"css": "sass --no-source-map src/css/app.scss:dist/css/app.css && postcss dist/css/app.css -r --config=.",
 		"js:format": "wp-scripts format src/js",
 		"js": "npm run js:format && wp-scripts build src/js/app --output-path=dist/js",
 		"build": "npm-run-all -p js css",
